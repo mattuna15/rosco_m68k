@@ -13,8 +13,6 @@
  * ------------------------------------------------------------
  */
 
-#include <stdio.h>
-
 extern void main(void);
 
 void kmain() {

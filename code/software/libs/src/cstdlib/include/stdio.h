@@ -20,6 +20,7 @@
 #include "printf.h"
 
 typedef void    FILE;
+
 #define stdin   (FILE*)
 #define stdout   (FILE*)
 

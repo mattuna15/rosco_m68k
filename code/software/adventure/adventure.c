@@ -35,11 +35,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#ifdef __CC65__
-#include <conio.h>
-#endif
 
 /* CONSTANTS */
+
+FILE *ignore;
 
 /* Maximum number of items user can carry */
 #define MAXITEMS 5
@@ -366,7 +365,7 @@ void doLook()
 void doQuit()
 {
     printf("%s", "Are you sure you want to quit (y/n)? ");
-    fgets(buffer, sizeof(buffer)-1, stdin);
+    fgets(buffer, sizeof(buffer)-1, ignore);
     if (tolower(buffer[0]) == 'y') {
         gameOver = 1;
     }
@@ -663,7 +662,7 @@ void doUse()
 void prompt()
 {
     printf("? ");
-    fgets(buffer, sizeof(buffer)-1, stdin);
+    fgets(buffer, sizeof(buffer)-1, ignore);
 
     /* Remove trailing newline */
     buffer[strlen(buffer)-1] = '\0';
@@ -823,7 +822,7 @@ int main(void)
 
         printf("Game over after %d turns.\n", turnsPlayed);
         printf("%s", "Do you want to play again (y/n)? ");
-        fgets(buffer, sizeof(buffer)-1, stdin);
+        fgets(buffer, sizeof(buffer)-1, ignore);
         if (tolower(buffer[0]) == 'n') {
             break;
         }
